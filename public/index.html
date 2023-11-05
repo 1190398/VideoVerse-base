@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <h1>WebSocket Client</h1>
+    <div>
+        <input type="text" id="message" placeholder="Enter a message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <div id="chat"></div>
+    
+    <script>
+        const chatDiv = document.getElementById('chat');
+        const messageInput = document.getElementById('message');
+        const ws = new WebSocket('ws://SERVER_IP_PLACEHOLDER:8080'); // Replace with your server's URL
+
+        ws.onopen = () => {
+            console.log('Connected to the WebSocket server.');
+        };
+
+        ws.onmessage = (event) => {
+        if (typeof event.data === 'string') {
+            // Text message received
+            chatDiv.innerHTML += `<p>Received: ${event.data}</p>`;
+        } else if (event.data instanceof Blob) {
+            // Binary data received, convert it to text
+            const reader = new FileReader();
+            reader.onload = function () {
+            chatDiv.innerHTML += `<p>Received: ${reader.result}</p>`;
+            };
+            reader.readAsText(event.data);
+        }
+        };
+
+        ws.onclose = (event) => {
+        if (event.wasClean) {
+            console.log(`Connection closed, code=${event.code}, reason=${event.reason}`);
+        } else {
+            console.error('Connection abruptly closed');
+        }
+        };
+
+        ws.onerror = (error) => {
+        console.error(`WebSocket error: ${error.message}`);
+        };
+
+        function sendMessage() {
+        const message = messageInput.value;
+        if (message) {
+            chatDiv.innerHTML += `<p>Sent: ${message}</p>`;
+            ws.send(message);
+            messageInput.value = "";
+        }
+        }
+
+    </script>
+</body>
+</html>
