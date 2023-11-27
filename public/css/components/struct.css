@@ -1,0 +1,67 @@
+
+
+.parent-div {
+    margin: 0;
+    padding: 0;
+    height: 87.8vh;
+    display: flex;
+}
+
+.left-div {
+    width: 15%;
+    background-color: #d2d2d2;
+}
+
+.center-div {
+    width: 20%;
+    background-color: #e3e3e3;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    height: 100%;
+}
+
+.right-div {
+    width: 65%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+
+.messageDiv {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: auto; /* Push content to the bottom */
+    width: 100%;
+}
+
+.messageDiv::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+.messageDiv::-webkit-scrollbar-thumb {
+    background-color: #888; /* Set the color of the scrollbar thumb */
+    border-radius: 6px; /* Set the border radius of the scrollbar thumb */
+}
+
+.messageDiv::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Set the color of the scrollbar track */
+}
+
+.messageDiv::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Set the color of the scrollbar thumb on hover */
+}
+
+
+

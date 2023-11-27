@@ -1,0 +1,27 @@
+.innerMessage {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    height: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.message {
+    align-items: start;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.personName {
+    font-size: small;
+    font-weight: 700;
+}
